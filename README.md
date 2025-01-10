@@ -49,7 +49,9 @@ Would you like to look for another movie? (y/n): y
 ```
 
 ## File Structure
-- `movie_selector.py`: The main Python script for the program.
+- `main.py`: The main Python script for the program.
+- `mov_func.py`: Contains all of the functions for the main program.
+- `mov_data.py`: Contains all of the data for the program.
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
