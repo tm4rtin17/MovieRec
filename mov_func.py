@@ -4,34 +4,22 @@ from mov_data import *
 
 #Define user input function
 def select_genre():
-    print('\f[1] Horror, [2] Comedy, [3] Action')
-    user_genre = pyip.inputNum("What genre of movie were you thinking about watching? Enter the corresponding number\n", min=1, max=3)
+    user_genre = pyip.inputNum("What genre of movie were you thinking about watching? Enter the corresponding number\n [1] Horror, [2] Comedy, [3] Action\n", min=1, max=3)
     return user_genre
 
 #Sort through movies of the genre selected in a list format
-def sort_genre(user_genre):
-    count = 1  #Counter to define numbered list in print statement
-    if user_genre == 1: 
-        print("\fHere is a list of horror movies: \n")
-        for movie in movie_matrix:
-            if movie[1] == 'Horror':
-                print(f'{count}.{movie[0]} ({movie[2]}/10 stars)')
-                movie_list.append(movie)
-                count += 1
-    elif user_genre == 2:
-        print("\fHere is a list of comedy movies: \n")
-        for movie in movie_matrix:
-            if movie[1] == 'Comedy':
-                print(f'{count}.{movie[0]} ({movie[2]}/10 stars)')
-                movie_list.append(movie)
-                count += 1
-    elif user_genre == 3:
-        print("\fHere is a list of horror movies: \n")
-        for movie in movie_matrix:
-            if movie[1] == 'Action':
-                print(f'{count}.{movie[0]} ({movie[2]}/10 stars)')
-                movie_list.append(movie)
-                count += 1
+def filter_by_genre(user_genre):
+    genres = {1: "Horror", 2: "Comedy", 3: "Action"} #Dictionary to define genres and map to their number
+    movie_list.clear()
+
+    if user_genre in genres:
+        selected_genre = genres[user_genre]
+        print(f"\nHere is a list of {selected_genre.lower()} movies:\n")
+        for count, movie in enumerate([m for m in movie_matrix if m[1] == selected_genre], start=1):
+            print(f'{count}. {movie[0]} ({movie[2]}/10 stars)')
+            movie_list.append(movie)
+    else:
+        print("Invalid genre selection.")
 
 #Allows the user to select a movie and prints its description
 def select_movie():
@@ -42,5 +30,5 @@ def select_movie():
 
 def main():
     user_genre = select_genre()
-    sort_genre(user_genre)
+    filter_by_genre(user_genre)
     select_movie()
