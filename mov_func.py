@@ -2,24 +2,40 @@
 import pyinputplus as pyip
 from mov_data import *
 
+#Defines a function to retrieve each unique genre from the movie data matrix
+def get_genres():
+    return {index + 1: genre for index, genre in enumerate({movie[1] for movie in movie_matrix})}
+
 #Define user input function
 def select_genre():
-    user_genre = pyip.inputNum("What genre of movie were you thinking about watching? Enter the corresponding number\n [1] Horror, [2] Comedy, [3] Action\n", min=1, max=3)
+    genres = get_genres() #Calls 'get_genres()' to store the dictionary in a variable
+
+    #Prints a list of availble genres in a list format
+    print("\f Availible Genres:")
+    for key, value in genres.items():
+        print(f"[{key}] {value}")
+
+    #User selects genre based on availble genres within the data matrix
+    user_genre = pyip.inputNum("\fWhat genre of movie were you thinking about watching? Enter the corresponding number\n", min=1, max=len(genres))
     return user_genre
 
 #Sort through movies of the genre selected in a list format
 def filter_by_genre(user_genre):
-    genres = {1: "Horror", 2: "Comedy", 3: "Action"} #Dictionary to define genres and map to their number
-    movie_list.clear()
+    genres = get_genres() #Calls 'get_genres()' to store the dictionary in a variable
+    selected_genre = genres.get(user_genre, None) #The genre that the user selected is stored here as a numerical value
 
-    if user_genre in genres:
-        selected_genre = genres[user_genre]
-        print(f"\nHere is a list of {selected_genre.lower()} movies:\n")
-        for count, movie in enumerate([m for m in movie_matrix if m[1] == selected_genre], start=1):
-            print(f'{count}. {movie[0]} ({movie[2]}/10 stars)')
-            movie_list.append(movie)
-    else:
-        print("Invalid genre selection.")
+    #Values selected by the user that are not listed will return this error
+    if not selected_genre:
+        print("Invalid genre selected.")
+        return
+    
+    #Message to user that the following movies belong to the genre that was selected
+    print(f"\fHere is a list of {selected_genre.lower()} movies:\n")
+
+    #List comprehension method to retrieve and print the list of movies of the selected genre from the data matrix, ratings are included in parenthesis
+    for count, movie in enumerate([m for m in movie_matrix if m[1] == selected_genre], start=1):
+        print(f"{count}. {movie[0]} ({movie[2]}/10 stars)")
+        movie_list.append(movie)
 
 #Allows the user to select a movie and prints its description
 def select_movie():
