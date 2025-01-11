@@ -1,4 +1,4 @@
-# Movie Recommendation System (V1.0.1)
+# Movie Recommendation System (v1.0.1)
 
 ## Overview
 Movie Selector is a Python-based program that allows users to explore a curated list of movies by genre and select a movie to view its description. Users can continue browsing until they find the perfect movie to watch.
