@@ -1,10 +1,10 @@
-# Movie Recommendation System (v1.1)
+# MovieRec (v1.1)
 
 ## Overview
-Movie Selector is a Python-based program that allows users to explore a curated list of movies by genre and select a movie to view its description. Users can continue browsing until they find the perfect movie to watch.
+MovieRec is a Python-based program that allows users to explore a curated list of movies by genre and select a movie to view its description. Users can continue browsing until they find the perfect movie to watch.
 
 ## Features
-- Browse movies by genre: Horror, Comedy, or Action.
+- Browse movies by genre.
 - View movie ratings and descriptions.
 - Search for additional movies as desired.
 - Simple and interactive user input.
@@ -32,7 +32,9 @@ Movie Selector is a Python-based program that allows users to explore a curated 
 
 ### Example Interaction
 ```text
-[1] Horror, [2] Comedy, [3] Action
+[1] Horror
+[2] Action
+[3] Comedy
 What genre of movie were you thinking about watching? Enter the corresponding number: 1
 
 Here is a list of horror movies:
