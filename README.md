@@ -7,6 +7,7 @@ MovieRec is a Python-based program that allows users to explore a curated list o
 - Browse movies by genre.
 - View movie ratings and descriptions.
 - Search for additional movies as desired.
+    - [**New**]: User can now go back a page to the list of movies in the selected genre instead of having to re-select the genre each time.
 - Simple and interactive user input.
 
 ## Installation
